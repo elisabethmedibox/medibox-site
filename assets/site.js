@@ -29,6 +29,22 @@
     });
   }
 
+  // Menu déroulant Territoires (au clic, pour tablette et souris)
+  document.querySelectorAll(".nav-deroulant > button").forEach(function (bouton) {
+    bouton.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var parent = bouton.parentElement;
+      var ouvert = parent.classList.toggle("ouvert");
+      bouton.setAttribute("aria-expanded", ouvert ? "true" : "false");
+    });
+  });
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".nav-deroulant.ouvert").forEach(function (d) {
+      d.classList.remove("ouvert");
+      d.querySelector("button").setAttribute("aria-expanded", "false");
+    });
+  });
+
   // Apparitions au scroll
   var observateur = new IntersectionObserver(
     function (entrees) {
