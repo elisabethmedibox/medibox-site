@@ -761,3 +761,191 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   h1 { font-size: clamp(2.1rem, 9vw, 2.6rem); }
   .etiquettes-resultats .etiquette { font-size: 0.92rem; }
 }
+
+/* --------------------------------------------------------------------------
+   Pages internes
+   -------------------------------------------------------------------------- */
+
+.hero-page {
+  position: relative;
+  background:
+    radial-gradient(900px 500px at 85% 15%, rgba(47, 182, 201, 0.2), transparent 60%),
+    linear-gradient(160deg, var(--marine) 0%, var(--marine-nuit) 100%);
+  color: var(--blanc);
+  padding: 168px 0 120px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
+  overflow: hidden;
+}
+.hero-page--photo { background: linear-gradient(160deg, rgba(14,46,70,0.92) 0%, rgba(10,36,56,0.95) 100%), var(--photo) center/cover no-repeat; }
+.hero-page h1 { margin: 20px 0 16px; font-size: clamp(2.3rem, 5vw, 3.6rem); }
+.hero-page .accroche { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 640px; }
+.hero-page .hero-cta { margin-top: 30px; }
+.hero-page .ile-fond {
+  position: absolute; right: 4%; bottom: -8%; width: 300px; opacity: 0.14; pointer-events: none;
+}
+
+.badge-titre {
+  display: inline-block;
+  font-family: var(--police-titre);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--corail); color: var(--blanc);
+  padding: 6px 14px; font-size: 0.85rem; transform: rotate(-2deg);
+}
+
+/* Cartes formules et tarifs */
+.formules-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+
+.carte-formule {
+  background: var(--blanc);
+  border: 1px solid #e2eaf0;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: var(--ombre-carte);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.carte-formule:hover { transform: translateY(-5px); box-shadow: var(--ombre-carte-hover); }
+.carte-formule--star { border: 2px solid var(--corail); position: relative; }
+.carte-formule .entete-formule { background: var(--marine); color: var(--blanc); padding: 26px 26px 20px; }
+.carte-formule--star .entete-formule { background: linear-gradient(120deg, var(--marine) 0%, var(--marine-nuit) 100%); }
+.carte-formule .entete-formule h3 { font-size: 1.5rem; }
+.carte-formule .entete-formule .pour-qui { color: var(--turquoise-clair); font-family: var(--police-titre); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem; font-weight: 700; }
+.carte-formule .prix { padding: 22px 26px 4px; }
+.carte-formule .prix .montant { font-family: var(--police-titre); font-weight: 700; font-size: 2.2rem; color: var(--marine); line-height: 1; }
+.carte-formule .prix .modalite { color: var(--gris); font-size: 0.9rem; margin-top: 6px; }
+.carte-formule ul { list-style: none; padding: 18px 26px 8px; flex: 1; }
+.carte-formule li { padding: 7px 0 7px 30px; position: relative; font-size: 0.95rem; border-bottom: 1px dashed #eef2f5; }
+.carte-formule li:last-child { border-bottom: 0; }
+.carte-formule li::before { content: "✓"; position: absolute; left: 0; top: 7px; color: var(--turquoise); font-weight: 700; }
+.carte-formule li.non::before { content: "·"; color: #b9c6cf; }
+.carte-formule li.non { color: #93a3ad; }
+.carte-formule .pied-formule { padding: 20px 26px 28px; }
+.carte-formule .pied-formule .btn { width: 100%; justify-content: center; }
+.carte-formule .ruban {
+  position: absolute; top: 20px; right: -36px; transform: rotate(38deg);
+  background: var(--corail); color: var(--blanc);
+  font-family: var(--police-titre); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; font-size: 0.75rem; padding: 6px 44px; z-index: 1;
+}
+.note-tarifs { color: var(--gris); font-size: 0.88rem; margin-top: 26px; max-width: 760px; }
+
+/* Bandeau photo pleine largeur avec voile */
+.bande-photo {
+  position: relative;
+  color: var(--blanc);
+  padding: 120px 0;
+  clip-path: polygon(0 50px, 100% 0, 100% calc(100% - 50px), 0 100%);
+  background: linear-gradient(150deg, rgba(14,46,70,0.9) 0%, rgba(22,64,95,0.82) 60%, rgba(10,36,56,0.92) 100%), var(--photo) center/cover no-repeat;
+}
+.bande-photo--corail {
+  background: linear-gradient(150deg, rgba(217,74,79,0.9) 0%, rgba(240,90,95,0.82) 55%, rgba(163,44,49,0.92) 100%), var(--photo) center/cover no-repeat;
+}
+.bande-photo h2 { max-width: 720px; }
+.bande-photo p { color: rgba(255,255,255,0.88); max-width: 620px; margin-top: 14px; font-size: 1.08rem; }
+.bande-photo .btn { margin-top: 28px; }
+
+/* Accordéons FAQ */
+.accordeons { max-width: 860px; }
+.accordeon {
+  background: var(--blanc);
+  border: 1px solid #e2eaf0;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.accordeon summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 22px;
+  font-weight: 700; color: var(--marine);
+  font-size: 1.02rem;
+}
+.accordeon summary::-webkit-details-marker { display: none; }
+.accordeon summary::after { content: "+"; font-family: var(--police-titre); font-size: 1.5rem; color: var(--corail); transition: transform 0.2s ease; flex-shrink: 0; }
+.accordeon[open] summary::after { transform: rotate(45deg); }
+.accordeon .contenu { padding: 0 22px 20px; color: var(--gris); }
+
+/* Blocs statistiques (pages résultats et territoires) */
+.stats-bloc {
+  background: var(--blanc);
+  border: 1px solid #e2eaf0;
+  border-radius: 14px;
+  padding: 30px 28px;
+  box-shadow: var(--ombre-carte);
+}
+.stats-bloc h3 { color: var(--marine); margin-bottom: 18px; }
+.lignes-stats { display: grid; gap: 10px; }
+.ligne-stat { display: flex; align-items: baseline; gap: 14px; padding: 8px 0; border-bottom: 1px dashed #eef2f5; }
+.ligne-stat:last-child { border-bottom: 0; }
+.ligne-stat .nombre {
+  font-family: var(--police-titre); font-weight: 700; font-size: 1.7rem;
+  color: var(--corail); min-width: 74px; text-align: right;
+}
+.ligne-stat.turquoise .nombre { color: var(--turquoise); }
+.ligne-stat.marine .nombre { color: var(--marine); }
+.ligne-stat .quoi { color: var(--encre); font-size: 0.96rem; }
+
+.palmares { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+.medaille {
+  background: var(--marine); color: var(--blanc);
+  border-radius: 10px; padding: 14px 18px; text-align: center; flex: 1; min-width: 150px;
+}
+.medaille .prenom { font-family: var(--police-titre); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--turquoise-clair); font-size: 0.8rem; }
+.medaille .titre-palmares { font-weight: 700; margin-top: 4px; font-size: 0.95rem; }
+
+/* Grille équipe */
+.equipe-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; }
+.membre {
+  background: var(--blanc); border: 1px solid #e2eaf0; border-radius: 14px;
+  padding: 28px 22px; text-align: center;
+}
+.membre .avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  margin: 0 auto 14px;
+  display: grid; place-items: center;
+  background: var(--degrade);
+  color: var(--blanc); font-family: var(--police-titre); font-weight: 700; font-size: 1.5rem;
+}
+.membre .avatar img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+.membre .nom { font-weight: 700; color: var(--marine); }
+.membre .role { color: var(--gris); font-size: 0.88rem; margin-top: 4px; }
+
+/* Frise dates clés */
+.frise { display: grid; gap: 0; max-width: 820px; }
+.date-cle { display: grid; grid-template-columns: 130px 26px 1fr; gap: 18px; align-items: start; padding: 0 0 30px; position: relative; }
+.date-cle .quand { font-family: var(--police-titre); font-weight: 700; text-transform: uppercase; color: var(--corail); font-size: 0.95rem; text-align: right; padding-top: 2px; }
+.date-cle .point { width: 14px; height: 14px; border-radius: 50%; background: var(--turquoise); margin-top: 6px; justify-self: center; position: relative; z-index: 1; }
+.date-cle::before { content: ""; position: absolute; left: 154px; top: 14px; bottom: -6px; width: 3px; background: #dbe7ee; }
+.date-cle:last-child::before { display: none; }
+.date-cle .quoi strong { color: var(--marine); }
+.date-cle .quoi p { color: var(--gris); font-size: 0.94rem; }
+
+/* Duo texte + image */
+.duo { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.duo--inverse { grid-template-columns: 0.95fr 1.05fr; }
+.duo-image { position: relative; }
+.duo-image img { border-radius: 14px; box-shadow: var(--ombre-carte-hover); width: 100%; object-fit: cover; }
+.duo-image .etiquette { position: absolute; bottom: -14px; left: 22px; transform: rotate(-2.5deg); }
+.duo h2 { margin-bottom: 14px; }
+.duo p { color: var(--gris); margin-bottom: 12px; }
+.duo .liste-coche { list-style: none; margin-top: 10px; }
+.duo .liste-coche li { padding: 7px 0 7px 30px; position: relative; }
+.duo .liste-coche li::before { content: "✓"; position: absolute; left: 0; color: var(--turquoise); font-weight: 700; }
+
+/* Galerie photos */
+.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.galerie img { border-radius: 12px; width: 100%; aspect-ratio: 4/3; object-fit: cover; box-shadow: var(--ombre-carte); }
+
+@media (max-width: 1024px) {
+  .formules-grille { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+}
+@media (max-width: 860px) {
+  .hero-page { padding: 130px 0 90px; clip-path: none; }
+  .bande-photo { clip-path: none; padding: 90px 0; }
+  .duo, .duo--inverse { grid-template-columns: 1fr; gap: 34px; }
+  .galerie { grid-template-columns: 1fr 1fr; }
+  .date-cle { grid-template-columns: 92px 22px 1fr; gap: 12px; }
+  .date-cle::before { left: 112px; }
+  .date-cle .quand { font-size: 0.85rem; }
+}
