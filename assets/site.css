@@ -1,0 +1,747 @@
+/* ==========================================================================
+   MediBox Antilles-Guyane · Charte du site vitrine
+   Identité : brochure 2026-2027 (marine + corail + turquoise,
+   bandeaux inclinés coins carrés, dégradés signature)
+   ========================================================================== */
+
+:root {
+  --marine: #16405f;
+  --marine-fonce: #0e2e46;
+  --marine-nuit: #0a2438;
+  --corail: #f05a5f;
+  --corail-fonce: #d94a4f;
+  --turquoise: #2fb6c9;
+  --turquoise-clair: #8fd7e2;
+  --sable: #f6f8fa;
+  --blanc: #ffffff;
+  --encre: #1c2b36;
+  --gris: #5a6b78;
+  --degrade: linear-gradient(92deg, var(--turquoise) 0%, #6ec6d8 38%, var(--corail) 100%);
+  --police-titre: "Avenir Next Condensed", "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+  --police-texte: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ombre-carte: 0 10px 34px rgba(14, 46, 70, 0.10);
+  --ombre-carte-hover: 0 18px 44px rgba(14, 46, 70, 0.16);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body { overflow-x: clip; }
+
+body {
+  font-family: var(--police-texte);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--encre);
+  background: var(--blanc);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Les enfants de grilles/flex doivent pouvoir rétrécir sous leur contenu */
+.hero-int > *, .chiffre, .etape, .carte-parcours, .carte-territoire,
+.pilier, .temoignage, .resultats-int > * { min-width: 0; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--turquoise); }
+
+.conteneur { width: min(1180px, 92vw); margin-inline: auto; }
+
+/* --------------------------------------------------------------------------
+   Typographie
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, .titre {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  line-height: 1.06;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); }
+h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
+
+.texte-degrade {
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.surtitre {
+  display: block;
+  font-family: var(--police-titre);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 0.95rem;
+  color: var(--corail);
+  margin-bottom: 14px;
+}
+
+.section-tete { max-width: 780px; margin-bottom: 52px; }
+.section-tete p { color: var(--gris); font-size: 1.06rem; margin-top: 16px; }
+
+/* --------------------------------------------------------------------------
+   Bandeaux inclinés (signature identité)
+   -------------------------------------------------------------------------- */
+
+.bandeaux { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+
+.bandeau {
+  display: inline-block;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blanc);
+  background: var(--corail);
+  padding: 7px 16px 6px;
+  transform: rotate(-2.4deg);
+  font-size: clamp(0.9rem, 1.9vw, 1.15rem);
+}
+
+.bandeau--turquoise { background: var(--turquoise); transform: rotate(-2.4deg) translateX(14px); }
+.bandeau--marine { background: var(--marine); }
+
+.etiquette {
+  display: inline-block;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--blanc);
+  background: var(--corail);
+  padding: 8px 14px;
+  font-size: 1rem;
+  box-shadow: 0 8px 22px rgba(10, 36, 56, 0.28);
+}
+
+.etiquette--turquoise { background: var(--turquoise); }
+.etiquette--marine { background: var(--marine); }
+.etiquette--verte { background: #3dbb85; }
+.etiquette--violette { background: #6a3d9a; }
+
+/* --------------------------------------------------------------------------
+   Boutons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 15px 28px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.btn--corail {
+  background: var(--corail);
+  color: var(--blanc);
+  box-shadow: 0 10px 26px rgba(240, 90, 95, 0.35);
+}
+.btn--corail:hover { background: var(--corail-fonce); transform: translateY(-2px); }
+
+.btn--contour {
+  background: transparent;
+  color: var(--blanc);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.btn--contour:hover { border-color: var(--blanc); background: rgba(255, 255, 255, 0.08); }
+
+.btn--contour-marine { background: transparent; color: var(--marine); border-color: var(--marine); }
+.btn--contour-marine:hover { background: var(--marine); color: var(--blanc); }
+
+.btn .fleche { transition: transform 0.18s ease; }
+.btn:hover .fleche { transform: translateX(4px); }
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.entete {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  transition: background 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+  padding: 18px 0;
+}
+
+.entete.figee {
+  background: rgba(10, 36, 56, 0.96);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  padding: 10px 0;
+}
+
+.entete-int { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.logo { text-decoration: none; line-height: 1; }
+.logo-nom {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+  color: var(--blanc);
+}
+.logo-nom .i { color: var(--corail); font-style: normal; }
+.logo-nom .box { color: var(--corail); }
+.logo-sous {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.42em;
+  color: var(--turquoise-clair);
+  font-weight: 600;
+  margin-top: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .logo-nom { font-size: 1.45rem; }
+  .logo-sous { letter-spacing: 0.3em; font-size: 0.58rem; }
+}
+
+.nav-principale { display: flex; align-items: center; gap: 26px; }
+.nav-principale a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: color 0.15s ease;
+}
+.nav-principale a:hover { color: var(--turquoise-clair); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-actions .btn { padding: 10px 18px; font-size: 0.88rem; }
+
+.burger {
+  display: none;
+  background: none;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.burger span { width: 24px; height: 2.5px; background: var(--blanc); transition: 0.2s; }
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  background:
+    radial-gradient(1100px 600px at 82% 10%, rgba(47, 182, 201, 0.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 90%, rgba(240, 90, 95, 0.14), transparent 55%),
+    linear-gradient(160deg, var(--marine) 0%, var(--marine-fonce) 58%, var(--marine-nuit) 100%);
+  color: var(--blanc);
+  padding: 170px 0 150px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 70px), 0 100%);
+  overflow: hidden;
+}
+
+.hero-iles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+}
+.hero-iles img { position: absolute; width: 190px; }
+.hero-iles .i1 { top: 12%; left: 4%; transform: rotate(-8deg); }
+.hero-iles .i2 { bottom: 18%; left: 16%; width: 150px; transform: rotate(6deg); }
+.hero-iles .i3 { top: 40%; right: 38%; width: 170px; transform: rotate(-4deg); }
+
+.hero-int {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.hero h1 { margin: 26px 0 20px; }
+.hero .accroche { font-size: 1.14rem; color: rgba(255, 255, 255, 0.85); max-width: 560px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
+
+.hero-note { margin-top: 26px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.55); }
+
+.hero-visuel { position: relative; justify-self: center; }
+.hero-visuel::before {
+  content: "";
+  position: absolute;
+  inset: 8% -6% 0 -6%;
+  background: var(--degrade);
+  opacity: 0.28;
+  filter: blur(6px);
+  clip-path: polygon(6% 12%, 100% 0, 94% 92%, 0 100%);
+}
+.hero-visuel img { position: relative; width: min(340px, 70vw); filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.35)); }
+
+.hero-chip {
+  position: absolute;
+  z-index: 2;
+  animation: flotte 5s ease-in-out infinite;
+}
+.hero-chip--haut { top: 10%; right: -8%; transform: rotate(3deg); animation-delay: 1.2s; }
+.hero-chip--bas { bottom: 8%; left: -14%; transform: rotate(-3.5deg); }
+
+@keyframes flotte {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+/* --------------------------------------------------------------------------
+   Bande chiffres (compteurs)
+   -------------------------------------------------------------------------- */
+
+.chiffres { padding: 40px 0 74px; }
+
+.chiffres-grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.chiffre { text-align: center; padding: 10px 6px; }
+.chiffre .valeur {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+  line-height: 1;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.chiffre .legende { margin-top: 10px; color: var(--gris); font-size: 0.95rem; line-height: 1.4; }
+
+.chiffres .source { text-align: center; color: #9aa8b2; font-size: 0.8rem; margin-top: 26px; }
+
+/* --------------------------------------------------------------------------
+   Sections génériques
+   -------------------------------------------------------------------------- */
+
+.section { padding: 96px 0; }
+
+.section--sable {
+  background: var(--sable);
+  clip-path: polygon(0 0, 100% 54px, 100% 100%, 0 calc(100% - 54px));
+  padding: 130px 0;
+}
+
+.section--marine {
+  background:
+    radial-gradient(900px 500px at 90% 0%, rgba(47, 182, 201, 0.18), transparent 55%),
+    linear-gradient(150deg, var(--marine) 0%, var(--marine-nuit) 100%);
+  color: var(--blanc);
+  clip-path: polygon(0 54px, 100% 0, 100% calc(100% - 54px), 0 100%);
+  padding: 140px 0;
+}
+
+.section--marine .section-tete p { color: rgba(255, 255, 255, 0.78); }
+.section--marine .surtitre { color: var(--turquoise-clair); }
+
+/* --------------------------------------------------------------------------
+   Parcours complet
+   -------------------------------------------------------------------------- */
+
+.parcours-ligne {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin: 60px 0 70px;
+}
+
+.parcours-ligne::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 12%;
+  right: 12%;
+  height: 4px;
+  background: var(--degrade);
+  border-radius: 2px;
+}
+
+.etape { text-align: center; padding: 0 12px; position: relative; }
+.etape .puce {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--blanc);
+  border: 4px solid var(--turquoise);
+  display: grid;
+  place-items: center;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  color: var(--marine);
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
+}
+.etape:nth-child(3) .puce, .etape:nth-child(4) .puce { border-color: var(--corail); }
+.etape h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.etape p { font-size: 0.9rem; color: var(--gris); }
+
+.parcours-cartes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+.carte-parcours {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 40px 38px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+.carte-parcours:hover { transform: translateY(-5px); box-shadow: var(--ombre-carte-hover); }
+.carte-parcours::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--degrade);
+}
+.carte-parcours .badge-nouveau {
+  position: absolute;
+  top: 22px;
+  right: -34px;
+  background: var(--corail);
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  padding: 6px 40px;
+  transform: rotate(35deg);
+}
+.carte-parcours p { color: var(--gris); }
+.carte-parcours .lien {
+  margin-top: auto;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--corail);
+  text-decoration: none;
+  font-size: 0.98rem;
+}
+.carte-parcours .lien:hover { text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   Territoires
+   -------------------------------------------------------------------------- */
+
+.territoires-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.carte-territoire {
+  background: var(--blanc);
+  border: 1px solid #e6ecf1;
+  border-radius: 14px;
+  padding: 34px 30px 30px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--encre);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carte-territoire:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ombre-carte-hover);
+  border-color: transparent;
+}
+
+.carte-territoire img { height: 130px; width: auto; margin-bottom: 20px; }
+.carte-territoire h3 { color: var(--marine); }
+.carte-territoire .mode {
+  font-family: var(--police-titre);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--turquoise);
+  margin: 6px 0 12px;
+}
+.carte-territoire p { color: var(--gris); font-size: 0.94rem; }
+.carte-territoire .lien {
+  margin-top: 18px;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  color: var(--corail);
+}
+
+/* --------------------------------------------------------------------------
+   Résultats (section marine)
+   -------------------------------------------------------------------------- */
+
+.resultats-int { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+
+.resultats-multiplicateur {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: 0.9;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.resultats-multiplicateur-legende { font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); margin-top: 14px; max-width: 380px; }
+
+.etiquettes-resultats { display: flex; flex-wrap: wrap; gap: 18px; }
+.etiquettes-resultats .etiquette { font-size: 1.06rem; padding: 12px 18px; }
+.etiquettes-resultats .etiquette:nth-child(1) { transform: rotate(-3deg); }
+.etiquettes-resultats .etiquette:nth-child(2) { transform: rotate(2deg); }
+.etiquettes-resultats .etiquette:nth-child(3) { transform: rotate(-2deg); }
+.etiquettes-resultats .etiquette:nth-child(4) { transform: rotate(2.5deg); }
+.etiquettes-resultats .etiquette:nth-child(5) { transform: rotate(-1.5deg); }
+
+.resultats-note { font-size: 0.82rem; color: rgba(255, 255, 255, 0.5); margin-top: 26px; }
+
+/* --------------------------------------------------------------------------
+   Piliers
+   -------------------------------------------------------------------------- */
+
+.piliers-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.pilier {
+  background: var(--blanc);
+  border-radius: 14px;
+  border: 1px solid #e6ecf1;
+  padding: 30px 26px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pilier:hover { transform: translateY(-5px); box-shadow: var(--ombre-carte); }
+.pilier .num {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  color: var(--blanc);
+  background: var(--marine);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
+.pilier:nth-child(2) .num { background: var(--corail); }
+.pilier:nth-child(3) .num { background: var(--turquoise); }
+.pilier:nth-child(4) .num { background: #3dbb85; }
+.pilier h3 { font-size: 1.08rem; margin-bottom: 10px; color: var(--marine); }
+.pilier p { font-size: 0.93rem; color: var(--gris); }
+
+/* --------------------------------------------------------------------------
+   Témoignages
+   -------------------------------------------------------------------------- */
+
+.temoignages-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+
+.temoignage {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.temoignage .guillemet {
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  line-height: 0.5;
+  color: var(--corail);
+}
+.temoignage p { color: var(--encre); font-size: 0.97rem; flex: 1; }
+.temoignage .auteur { font-weight: 700; color: var(--marine); font-size: 0.95rem; }
+.temoignage .auteur small { display: block; font-weight: 500; color: var(--gris); margin-top: 2px; }
+.temoignage .etoiles { color: #f0b429; letter-spacing: 2px; font-size: 0.95rem; }
+
+/* --------------------------------------------------------------------------
+   Édito
+   -------------------------------------------------------------------------- */
+
+.edito-int {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.edito-visuel { position: relative; }
+.edito-visuel::before {
+  content: "";
+  position: absolute;
+  inset: 12% -8% -4% 55%;
+  background: var(--turquoise);
+  opacity: 0.16;
+}
+.edito-visuel::after {
+  content: "";
+  position: absolute;
+  inset: 55% 55% -8% -8%;
+  background: var(--corail);
+  opacity: 0.14;
+}
+.edito-visuel img { position: relative; z-index: 1; }
+
+.edito blockquote {
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: var(--marine);
+  font-weight: 600;
+  border-left: 4px solid var(--corail);
+  padding-left: 24px;
+  margin: 24px 0;
+}
+.edito .signature { color: var(--gris); }
+.edito .signature strong { color: var(--marine); }
+
+/* --------------------------------------------------------------------------
+   CTA final
+   -------------------------------------------------------------------------- */
+
+.cta-final {
+  background:
+    radial-gradient(800px 400px at 15% 20%, rgba(47, 182, 201, 0.25), transparent 55%),
+    linear-gradient(120deg, var(--marine) 0%, var(--marine-nuit) 100%);
+  color: var(--blanc);
+  text-align: center;
+  padding: 110px 0;
+  clip-path: polygon(0 54px, 100% 0, 100% 100%, 0 100%);
+}
+.cta-final h2 { max-width: 760px; margin-inline: auto; }
+.cta-final p { color: rgba(255, 255, 255, 0.8); margin: 18px auto 36px; max-width: 560px; }
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.pied {
+  background: var(--marine-nuit);
+  color: rgba(255, 255, 255, 0.72);
+  padding: 60px 0 34px;
+  font-size: 0.92rem;
+}
+.pied-int { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 34px; }
+.pied nav { display: flex; flex-direction: column; gap: 10px; }
+.pied nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; }
+.pied nav a:hover { color: var(--turquoise-clair); }
+.pied .titre-colonne {
+  font-family: var(--police-titre);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--blanc);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+.pied-bas {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 44px;
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   Apparitions au scroll
+   -------------------------------------------------------------------------- */
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delai-1 { transition-delay: 0.1s; }
+.reveal-delai-2 { transition-delay: 0.2s; }
+.reveal-delai-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-chip { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .piliers-grille { grid-template-columns: repeat(2, 1fr); }
+  .chiffres-grille { grid-template-columns: repeat(2, 1fr); gap: 34px; }
+  .resultats-int { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 860px) {
+  .nav-principale {
+    position: fixed;
+    inset: 0;
+    background: var(--marine-nuit);
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.2rem;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0.25s;
+    z-index: 60;
+  }
+  .nav-principale.ouverte { transform: translateX(0); visibility: visible; }
+  .nav-principale a { font-size: 1.25rem; }
+  .burger { display: flex; z-index: 70; }
+  .burger.ouvert span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .burger.ouvert span:nth-child(2) { opacity: 0; }
+  .burger.ouvert span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  .nav-actions .btn--contour { display: none; }
+
+  .hero { padding: 130px 0 110px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), 0 100%); }
+  .hero-int { grid-template-columns: 1fr; }
+  .hero-visuel { display: none; }
+
+  .section--sable, .section--marine { clip-path: none; padding: 90px 0; }
+  .parcours-ligne { grid-template-columns: repeat(2, 1fr); gap: 34px 10px; }
+  .parcours-ligne::before { display: none; }
+  .parcours-cartes { grid-template-columns: 1fr; }
+  .territoires-grille { grid-template-columns: 1fr; }
+  .temoignages-grille { grid-template-columns: 1fr; }
+  .edito-int { grid-template-columns: 1fr; gap: 40px; }
+  .edito-visuel { max-width: 260px; margin-inline: auto; }
+}
+
+@media (max-width: 520px) {
+  .chiffres-grille { grid-template-columns: 1fr; gap: 30px; }
+  .chiffre .valeur { font-size: 2.4rem; }
+  .piliers-grille { grid-template-columns: 1fr; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  h1 { font-size: clamp(2.1rem, 9vw, 2.6rem); }
+  .etiquettes-resultats .etiquette { font-size: 0.92rem; }
+}
