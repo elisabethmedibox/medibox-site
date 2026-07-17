@@ -310,12 +310,12 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.1;
+  opacity: 0.28;
 }
-.hero-iles img { position: absolute; width: 190px; }
-.hero-iles .i1 { top: 12%; left: 4%; transform: rotate(-8deg); }
-.hero-iles .i2 { bottom: 18%; left: 16%; width: 150px; transform: rotate(6deg); }
-.hero-iles .i3 { top: 40%; right: 38%; width: 170px; transform: rotate(-4deg); }
+.hero-iles img { position: absolute; }
+.hero-iles .i1 { top: 5%; left: 45%; width: 210px; transform: rotate(-6deg); }
+.hero-iles .i2 { bottom: 4%; left: 2%; width: 165px; transform: rotate(6deg); }
+.hero-iles .i3 { top: 52%; left: 46%; width: 175px; transform: rotate(-4deg); }
 
 .hero-int {
   position: relative;
@@ -467,20 +467,33 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 .etape h3 { font-size: 1.05rem; margin-bottom: 6px; }
 .etape p { font-size: 0.9rem; color: var(--gris); }
 
-.parcours-cartes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.parcours-cartes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
 
 .carte-parcours {
   background: var(--blanc);
   border-radius: 14px;
   box-shadow: var(--ombre-carte);
-  padding: 40px 38px;
+  padding: 0;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+}
+
+.carte-parcours .photo-carte {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.carte-parcours .corps-carte {
+  padding: 26px 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   align-items: flex-start;
+  flex: 1;
 }
 .carte-parcours:hover { transform: translateY(-5px); box-shadow: var(--ombre-carte-hover); }
 .carte-parcours::before {
@@ -492,6 +505,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 }
 .carte-parcours .badge-nouveau {
   position: absolute;
+  z-index: 2;
   top: 22px;
   right: -34px;
   background: var(--corail);
