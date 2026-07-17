@@ -325,7 +325,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   align-items: center;
 }
 
-.hero h1 { margin: 26px 0 20px; }
+.hero h1 { margin: 24px 0 18px; font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
 .hero .accroche { font-size: 1.14rem; color: rgba(255, 255, 255, 0.85); max-width: 560px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
 
@@ -486,6 +486,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   height: 190px;
   object-fit: cover;
 }
+.photo-carte--haut { object-position: 50% 12%; }
 
 .carte-parcours .corps-carte {
   padding: 26px 28px 30px;
