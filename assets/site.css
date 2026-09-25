@@ -878,7 +878,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
   overflow: hidden;
 }
-.hero-page--photo { background: linear-gradient(160deg, rgba(14,46,70,0.92) 0%, rgba(10,36,56,0.95) 100%), var(--photo) center/cover no-repeat; }
+.hero-page--photo { background: linear-gradient(160deg, rgba(14,46,70,0.60) 0%, rgba(10,36,56,0.68) 100%), var(--photo) center/cover no-repeat; }
 .hero-page h1 { margin: 20px 0 16px; font-size: clamp(2.3rem, 5vw, 3.6rem); }
 .hero-page .accroche { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 640px; }
 .hero-page .hero-cta { margin-top: 30px; }
@@ -937,10 +937,10 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   color: var(--blanc);
   padding: 120px 0;
   clip-path: polygon(0 50px, 100% 0, 100% calc(100% - 50px), 0 100%);
-  background: linear-gradient(150deg, rgba(14,46,70,0.9) 0%, rgba(22,64,95,0.82) 60%, rgba(10,36,56,0.92) 100%), var(--photo) center/cover no-repeat;
+  background: linear-gradient(150deg, rgba(14,46,70,0.56) 0%, rgba(22,64,95,0.44) 60%, rgba(10,36,56,0.60) 100%), var(--photo) center/cover no-repeat;
 }
 .bande-photo--corail {
-  background: linear-gradient(150deg, rgba(217,74,79,0.9) 0%, rgba(240,90,95,0.82) 55%, rgba(163,44,49,0.92) 100%), var(--photo) center/cover no-repeat;
+  background: linear-gradient(150deg, rgba(217,74,79,0.62) 0%, rgba(240,90,95,0.50) 55%, rgba(163,44,49,0.66) 100%), var(--photo) center/cover no-repeat;
 }
 .bande-photo h2 { max-width: 720px; }
 .bande-photo p { color: rgba(255,255,255,0.88); max-width: 620px; margin-top: 14px; font-size: 1.08rem; }
@@ -1050,4 +1050,15 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   .date-cle { grid-template-columns: 92px 22px 1fr; gap: 12px; }
   .date-cle::before { left: 112px; }
   .date-cle .quand { font-size: 0.85rem; }
+}
+
+/* Le voile sur les photos a été allégé pour qu'on voie vraiment les locaux :
+   cette ombre portée garantit que le texte blanc reste lisible quelle que soit
+   la photo posée derrière. */
+.hero-page--photo h1,
+.hero-page--photo .accroche,
+.bande-photo h2,
+.bande-photo p,
+.bande-photo .surtitre {
+  text-shadow: 0 2px 14px rgba(6, 24, 38, 0.55);
 }
