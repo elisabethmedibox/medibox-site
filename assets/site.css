@@ -1108,3 +1108,22 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 /* Le bandeau pousse l'en-tête fixe vers le bas. */
 body.a-bandeau .entete { top: var(--h-bandeau, 38px); }
 body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
+
+/* Variante du carré numéroté : quand le chiffre n'est pas un numéro d'ordre
+   mais un volume, il doit se lire tel quel. Un carré avec « 6 » se lit
+   « sixième bloc » ; une étiquette « 6 séances » ne se lit que d'une façon. */
+.pilier .num--volume {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+/* le jeu de couleurs tenait sur quatre blocs, on le prolonge jusqu'à huit */
+.pilier:nth-child(5) .num { background: #2196c9; }
+.pilier:nth-child(6) .num { background: #f08a3c; }
+.pilier:nth-child(7) .num { background: #6a3d9a; }
+.pilier:nth-child(8) .num { background: var(--gris); }
