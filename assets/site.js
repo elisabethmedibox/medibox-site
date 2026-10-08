@@ -93,3 +93,79 @@
     observateurCompteurs.observe(el);
   });
 })();
+
+/* ------------------------------------------------------------------
+   Bandeau d'actualités
+   Lit assets/actualites.json, ne garde que les annonces dont la période
+   couvre aujourd'hui, et n'insère le bandeau que s'il en reste au moins
+   une. Une annonce : texte fixe. Plusieurs : défilement en boucle.
+   Si le fichier manque ou est illisible, on ne fait rien : le site
+   s'affiche normalement, sans bande vide.
+   ------------------------------------------------------------------ */
+(function () {
+  "use strict";
+
+  function aujourdhui() {
+    var d = new Date();
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+  function enDate(texte) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(texte || ""));
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  }
+  function echappe(t) {
+    var d = document.createElement("div");
+    d.textContent = t;
+    return d.innerHTML;
+  }
+
+  fetch("assets/actualites.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.annonces)) return;
+      var now = aujourdhui();
+      var actives = data.annonces.filter(function (a) {
+        if (!a || !a.texte) return false;
+        var du = enDate(a.du), au = enDate(a.au);
+        if (du && now < du) return false;
+        if (au && now > au) return false;   // le jour de fin reste affiché
+        return true;
+      });
+      if (!actives.length) return;
+
+      function morceau(a) {
+        var t = echappe(a.texte);
+        return a.lien
+          ? '<a href="' + echappe(a.lien) + '">' + t + "</a>"
+          : '<span class="actu">' + t + "</span>";
+      }
+
+      var bandeau = document.createElement("div");
+      bandeau.className = "bandeau-actu";
+      bandeau.setAttribute("role", "region");
+      bandeau.setAttribute("aria-label", "Actualités de la prépa");
+
+      if (actives.length === 1) {
+        bandeau.classList.add("bandeau-actu--fixe");
+        bandeau.innerHTML = '<div class="piste">' + morceau(actives[0]) + "</div>";
+      } else {
+        bandeau.classList.add("bandeau-actu--defile");
+        var piste = actives.map(morceau).join('<span class="sep">&#183;</span>');
+        bandeau.innerHTML =
+          '<div class="rail">' +
+          '<div class="piste">' + piste + '<span class="sep">&#183;</span></div>' +
+          '<div class="piste" aria-hidden="true">' + piste + '<span class="sep">&#183;</span></div>' +
+          "</div>";
+      }
+
+      document.body.insertBefore(bandeau, document.body.firstChild);
+      document.body.classList.add("a-bandeau");
+      // on mesure la hauteur réelle plutôt que de la deviner
+      var h = bandeau.offsetHeight;
+      document.documentElement.style.setProperty("--h-bandeau", h + "px");
+      window.addEventListener("resize", function () {
+        document.documentElement.style.setProperty("--h-bandeau", bandeau.offsetHeight + "px");
+      }, { passive: true });
+    })
+    .catch(function () { /* pas de bandeau, pas de drame */ });
+})();

@@ -1,0 +1,17 @@
+{
+  "_mode_emploi": "Chaque annonce s'affiche dans le bandeau du site entre sa date de debut et sa date de fin, puis disparait toute seule. Dates au format AAAA-MM-JJ. L'annonce disparait APRES la journee de fin. Si plusieurs annonces sont actives, le bandeau les fait defiler. Laisser la liste vide pour ne rien afficher.",
+  "annonces": [
+    {
+      "texte": "Portes ouvertes : samedi 17 octobre à 10 h, et vendredi 23 octobre à 18 h",
+      "lien": "journees-portes-ouvertes.html",
+      "du": "2026-10-08",
+      "au": "2026-10-23"
+    },
+    {
+      "texte": "Terminale Santé : rentrée le mercredi 14 octobre, places limitées",
+      "lien": "terminale-sante.html",
+      "du": "2026-10-08",
+      "au": "2026-10-14"
+    }
+  ]
+}

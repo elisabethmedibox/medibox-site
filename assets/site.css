@@ -1062,3 +1062,49 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 .bande-photo .surtitre {
   text-shadow: 0 2px 14px rgba(6, 24, 38, 0.55);
 }
+
+/* ------------------------------------------------------------------
+   Bandeau d'actualités
+   Alimenté par assets/actualites.json : chaque annonce s'affiche entre
+   sa date de début et sa date de fin, puis disparaît d'elle-même.
+   Le bandeau n'existe dans le HTML que si une annonce est active, pour
+   ne jamais laisser une bande vide en haut du site.
+   ------------------------------------------------------------------ */
+.bandeau-actu {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--corail) 0%, #d94a4f 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.bandeau-actu a,
+.bandeau-actu span.actu {
+  display: inline-block;
+  padding: 9px 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.bandeau-actu a:hover { text-decoration: underline; }
+.bandeau-actu .sep { opacity: 0.55; padding: 0 26px; }
+
+/* Une seule annonce : centrée, immobile, lisible. */
+.bandeau-actu--fixe { text-align: center; }
+.bandeau-actu--fixe .piste { padding-inline: 20px; }
+
+/* Plusieurs annonces : défilement continu. La piste est dupliquée pour
+   que la boucle soit sans rupture ; la copie est cachée aux lecteurs
+   d'écran, qui liraient sinon deux fois la même chose. */
+.bandeau-actu--defile .rail { display: flex; width: max-content; animation: defile 34s linear infinite; }
+.bandeau-actu--defile:hover .rail { animation-play-state: paused; }
+@keyframes defile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .bandeau-actu--defile .rail { animation: none; }
+  .bandeau-actu--defile { overflow-x: auto; }
+}
+/* Le bandeau pousse l'en-tête fixe vers le bas. */
+body.a-bandeau .entete { top: var(--h-bandeau, 38px); }
+body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
