@@ -1127,3 +1127,22 @@ body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
 .pilier:nth-child(6) .num { background: #f08a3c; }
 .pilier:nth-child(7) .num { background: #6a3d9a; }
 .pilier:nth-child(8) .num { background: var(--gris); }
+
+/* Bloc matière sans volume horaire : le programme n'étant pas arrêté, on
+   n'affiche aucun nombre de séances. Un liseré coloré en tête garde le
+   rythme visuel que donnaient les pastilles. */
+.pilier--matiere { position: relative; padding-top: 34px; overflow: hidden; }
+.pilier--matiere::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--marine);
+}
+.pilier--matiere:nth-child(2)::before { background: var(--corail); }
+.pilier--matiere:nth-child(3)::before { background: var(--turquoise); }
+.pilier--matiere:nth-child(4)::before { background: #3dbb85; }
+.pilier--matiere:nth-child(5)::before { background: #2196c9; }
+.pilier--matiere:nth-child(6)::before { background: #f08a3c; }
+.pilier--matiere:nth-child(7)::before { background: #6a3d9a; }
+.pilier--matiere:nth-child(8)::before { background: var(--gris); }
