@@ -181,15 +181,18 @@
 (function () {
   "use strict";
   var cible = document.querySelector('[data-compteur="qcm_realises"]');
-  if (!cible) return;
+  var cibleEtu = document.querySelector('[data-compteur="etudiants_accompagnes"]');
+  var promoEl = document.querySelector("[data-promo-en-cours]");
+  if (!cible && !cibleEtu && !promoEl) return;
   var dateEl = document.querySelector("[data-releve]");
 
   var MOIS = ["janvier","février","mars","avril","mai","juin","juillet",
               "août","septembre","octobre","novembre","décembre"];
 
-  function poser(total, releve) {
-    if (!total) return;
-    cible.setAttribute("data-cible", String(total));
+  function poser(total, releve, etudiants, promo) {
+    if (total && cible) cible.setAttribute("data-cible", String(total));
+    if (etudiants && cibleEtu) cibleEtu.setAttribute("data-cible", String(etudiants));
+    if (promo && promoEl) promoEl.textContent = String(promo);
     if (dateEl && releve) {
       var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(releve);
       if (m) dateEl.textContent = (+m[3]) + " " + MOIS[+m[2] - 1] + " " + m[1];
@@ -204,7 +207,7 @@
         var q = d.qcm_realises;
         poser((q.exoteach_jusqu_au_20_fevrier_2026 || 0)
             + (q.exoteach_depuis_le_21_fevrier_2026 || 0)
-            + (q.medibox || 0), q.releve_le);
+            + (q.medibox || 0), q.releve_le, d.etudiants_accompagnes, null);
       });
   }
 
@@ -215,7 +218,7 @@
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (d) {
       clearTimeout(minuteur);
-      poser(d.qcm_realises, d.releve_le);
+      poser(d.qcm_realises, d.releve_le, d.etudiants_accompagnes, d.promo_en_cours);
     })
     .catch(function () {
       clearTimeout(minuteur);
