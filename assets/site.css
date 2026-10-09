@@ -341,8 +341,10 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 }
 .hero-visuel img {
   position: relative;
-  width: min(430px, 70vw);
-  aspect-ratio: 1 / 1;
+  width: min(460px, 76vw);
+  /* L'image porte ses propres étiquettes dans les coins : on la montre
+     entière plutôt que de la recadrer en carré, ce qui les amputerait. */
+  aspect-ratio: 1080 / 889;
   object-fit: cover;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
 }
@@ -353,7 +355,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   animation: flotte 5s ease-in-out infinite;
 }
 .hero-chip--haut { top: 10%; right: -8%; transform: rotate(3deg); animation-delay: 1.2s; }
-.hero-chip--bas { bottom: 8%; left: -14%; transform: rotate(-3.5deg); }
+.hero-chip--bas { bottom: 6%; right: -9%; transform: rotate(-3.5deg); }
 
 @keyframes flotte {
   0%, 100% { translate: 0 0; }
