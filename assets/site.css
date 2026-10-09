@@ -344,7 +344,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   width: min(460px, 76vw);
   /* L'image porte ses propres étiquettes dans les coins : on la montre
      entière plutôt que de la recadrer en carré, ce qui les amputerait. */
-  aspect-ratio: 1080 / 889;
+  aspect-ratio: 1080 / 890;
   object-fit: cover;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
 }
