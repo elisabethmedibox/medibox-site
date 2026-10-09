@@ -1,0 +1,12 @@
+{
+  "_mode_emploi": "Les chiffres affiches en grand sur l'accueil. 'exoteach' est ce qui a ete fait sur l'ancienne plateforme : ce socle ne bouge plus, l'ancienne plateforme n'etant plus alimentee. 'medibox' est la mesure relevee dans qcm_reponses_pass_las, avec sa date. Le site additionne les deux et affiche la date du releve : la valeur et la date changent donc toujours ensemble, et le site n'invente jamais une progression qu'il n'a pas mesuree. Pour rafraichir : relever le compte en base, mettre a jour 'medibox' et 'releve_le'.",
+  "qcm_realises": {
+    "exoteach_jusqu_au_20_fevrier_2026": 1349923,
+    "exoteach_depuis_le_21_fevrier_2026": 246636,
+    "medibox": 190924,
+    "releve_le": "2026-10-09"
+  },
+  "etudiants_accompagnes": 280,
+  "qcm_rediges": 25000,
+  "heures_encadrement": 12
+}

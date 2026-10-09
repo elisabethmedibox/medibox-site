@@ -169,3 +169,41 @@
     })
     .catch(function () { /* pas de bandeau, pas de drame */ });
 })();
+
+/* ------------------------------------------------------------------
+   Compteur de QCM réalisés
+   Le total additionne un socle figé (les cinq années sur l'ancienne
+   plateforme, qui ne bougeront plus) et la mesure relevée dans la base
+   de l'application. Le fichier assets/compteurs.json porte les deux,
+   avec la date du relevé : la valeur et la date changent donc ensemble,
+   et le site n'invente jamais une progression qu'il n'a pas mesurée.
+   Si le fichier manque, la valeur écrite dans le HTML reste affichée.
+   ------------------------------------------------------------------ */
+(function () {
+  "use strict";
+  var cible = document.querySelector('[data-compteur="qcm_realises"]');
+  if (!cible) return;
+
+  fetch("assets/compteurs.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !d.qcm_realises) return;
+      var q = d.qcm_realises;
+      var total = (q.exoteach_jusqu_au_20_fevrier_2026 || 0)
+              + (q.exoteach_depuis_le_21_fevrier_2026 || 0)
+              + (q.medibox || 0);
+      if (!total) return;
+      cible.setAttribute("data-cible", String(total));
+
+      var releve = document.querySelector("[data-releve]");
+      if (releve && q.releve_le) {
+        var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(q.releve_le);
+        if (m) {
+          var mois = ["janvier","février","mars","avril","mai","juin","juillet",
+                      "août","septembre","octobre","novembre","décembre"];
+          releve.textContent = (+m[3]) + " " + mois[+m[2] - 1] + " " + m[1];
+        }
+      }
+    })
+    .catch(function () { /* on garde la valeur du HTML */ });
+})();
