@@ -1051,6 +1051,10 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 .galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .galerie img { border-radius: 12px; width: 100%; aspect-ratio: 4/3; object-fit: cover; box-shadow: var(--ombre-carte); }
 
+/* Galerie de pages de document : format portrait, jamais rognees */
+.galerie--pages { grid-template-columns: repeat(3, 1fr); max-width: 760px; margin-inline: auto; gap: 22px; }
+.galerie--pages img { aspect-ratio: 630/876; object-fit: contain; background: var(--blanc); }
+
 @media (max-width: 1024px) {
   .formules-grille { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
 }
@@ -1178,4 +1182,10 @@ body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
   /* en dessous, plus aucune découpe : les blocs se posent bord à bord */
   .bande-photo--vers-sable { clip-path: none; }
   .bande-photo--vers-sable + .section--sable { margin-top: 0; }
+}
+
+/* Les apercus de pages restent en bande de trois, meme sur telephone :
+   ce sont des vignettes, pas des illustrations a regarder en detail. */
+@media (max-width: 860px) {
+  .galerie--pages { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 }
