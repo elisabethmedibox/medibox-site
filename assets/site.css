@@ -1189,3 +1189,7 @@ body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
 @media (max-width: 860px) {
   .galerie--pages { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 }
+
+/* Les liens legaux du bas de pied : lisibles, mais discrets */
+.pied-bas a { color: rgba(255, 255, 255, 0.62); text-decoration: none; }
+.pied-bas a:hover { color: #fff; text-decoration: underline; }
