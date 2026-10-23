@@ -1079,6 +1079,19 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   text-shadow: 0 2px 14px rgba(6, 24, 38, 0.55);
 }
 
+/* Sur une photo, le degrade decoupe dans le texte ne tient pas : des que la
+   photo s'eclaircit derriere, le turquoise disparait et le corail vire au
+   rose delave. Le titre passe donc en blanc plein, et l'ombre portee
+   ci-dessus reprend effet, ce qu'elle ne pouvait pas faire sur un texte
+   transparent. */
+.hero-page--photo h1 .texte-degrade,
+.bande-photo h2 .texte-degrade {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--blanc);
+}
+
 /* ------------------------------------------------------------------
    Bandeau d'actualités
    Alimenté par assets/actualites.json : chaque annonce s'affiche entre
