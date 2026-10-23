@@ -16,7 +16,6 @@
   --blanc: #ffffff;
   --encre: #1c2b36;
   --gris: #5a6b78;
-  --degrade: linear-gradient(92deg, var(--turquoise) 0%, #6ec6d8 38%, var(--corail) 100%);
   --police-titre: "Avenir Next Condensed", "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
   --police-texte: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --ombre-carte: 0 10px 34px rgba(14, 46, 70, 0.10);
@@ -64,12 +63,10 @@ h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); }
 h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
 h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 
-.texte-degrade {
-  background: var(--degrade);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+/* Accent des titres. Plus de degrade : trois couleurs dans un titre, blanc
+   compris, finissaient par evoquer un drapeau. Une seule couleur, et le
+   texte reste du texte, donc l'ombre portee des heros sur photo y prend. */
+.texte-degrade { color: var(--blanc); }
 
 .surtitre {
   display: block;
@@ -336,7 +333,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   content: "";
   position: absolute;
   inset: -14px 14px 14px -14px;
-  background: var(--degrade);
+  background: var(--turquoise);
   opacity: 0.85;
 }
 .hero-visuel img {
@@ -380,10 +377,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   font-weight: 700;
   font-size: clamp(2.3rem, 4.6vw, 3.4rem);
   line-height: 1;
-  background: var(--degrade);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--turquoise);
 }
 .chiffre .legende { margin-top: 10px; color: var(--gris); font-size: 0.95rem; line-height: 1.4; }
 
@@ -444,7 +438,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   left: 12%;
   right: 12%;
   height: 4px;
-  background: var(--degrade);
+  background: var(--turquoise);
   border-radius: 2px;
 }
 
@@ -504,7 +498,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 6px;
-  background: var(--degrade);
+  background: var(--turquoise);
 }
 .carte-parcours .badge-nouveau {
   position: absolute;
@@ -602,10 +596,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   font-weight: 700;
   font-size: clamp(5rem, 12vw, 9rem);
   line-height: 0.9;
-  background: var(--degrade);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--turquoise-clair);
 }
 .resultats-multiplicateur-legende { font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); margin-top: 14px; max-width: 380px; }
 
@@ -1018,7 +1009,7 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   width: 72px; height: 72px; border-radius: 50%;
   margin: 0 auto 14px;
   display: grid; place-items: center;
-  background: var(--degrade);
+  background: var(--turquoise);
   color: var(--blanc); font-family: var(--police-titre); font-weight: 700; font-size: 1.5rem;
 }
 .membre .avatar img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
@@ -1077,19 +1068,6 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 .bande-photo p,
 .bande-photo .surtitre {
   text-shadow: 0 2px 14px rgba(6, 24, 38, 0.55);
-}
-
-/* Sur une photo, le degrade decoupe dans le texte ne tient pas : des que la
-   photo s'eclaircit derriere, le turquoise disparait et le corail vire au
-   rose delave. Le titre passe donc en blanc plein, et l'ombre portee
-   ci-dessus reprend effet, ce qu'elle ne pouvait pas faire sur un texte
-   transparent. */
-.hero-page--photo h1 .texte-degrade,
-.bande-photo h2 .texte-degrade {
-  background: none;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  color: var(--blanc);
 }
 
 /* ------------------------------------------------------------------
