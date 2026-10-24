@@ -1,3 +1,4 @@
-# Site en préparation : aucune indexation tant que le domaine n'est pas basculé.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://www.mediboxantillesguyane.com/sitemap.xml
