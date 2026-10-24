@@ -905,6 +905,10 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
   border: 1px solid #e2eaf0;
   border-radius: 14px;
   overflow: hidden;
+  /* ⛔ Sans ce repere, le ruban en position absolue s'accroche a un ancetre
+     plus haut et part ailleurs sur la page. Il ne marchait que sur les cartes
+     --star, qui posaient position:relative de leur cote. */
+  position: relative;
   display: flex; flex-direction: column;
   box-shadow: var(--ombre-carte);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1184,3 +1188,15 @@ body.a-bandeau { padding-top: var(--h-bandeau, 38px); }
 /* Les liens legaux du bas de pied : lisibles, mais discrets */
 .pied-bas a { color: rgba(255, 255, 255, 0.62); text-decoration: none; }
 .pied-bas a:hover { color: #fff; text-decoration: underline; }
+
+/* Cinq blocs d'annee cote a cote (P2 a D4). Les paliers de reduction sont
+   ecrits ici en entier : une regle posee en style inline sur la grille
+   l'emporterait sur les media queries et casserait l'affichage telephone. */
+.piliers-grille--cinq { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.piliers-grille--cinq .pilier { padding: 24px 18px; }
+.piliers-grille--cinq .annee { font-family: var(--police-titre); font-weight: 700;
+  font-size: 2.1rem; line-height: 1; color: var(--marine); margin-bottom: 6px; }
+.piliers-grille--cinq .des { color: var(--corail); font-weight: 700; font-size: 0.9rem; margin-top: 12px; }
+@media (max-width: 1100px) { .piliers-grille--cinq { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px)  { .piliers-grille--cinq { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .piliers-grille--cinq { grid-template-columns: 1fr; } }
