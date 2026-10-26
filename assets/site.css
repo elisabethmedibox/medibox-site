@@ -917,7 +917,10 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
 .carte-formule--star { border: 2px solid var(--corail); position: relative; }
 .carte-formule .entete-formule { background: var(--marine); color: var(--blanc); padding: 26px 26px 20px; }
 .carte-formule--star .entete-formule { background: linear-gradient(120deg, var(--marine) 0%, var(--marine-nuit) 100%); }
-.carte-formule .entete-formule h3 { font-size: 1.5rem; }
+/* ⛔ Les titres du site passent tous en capitales, mais le nom d'une carte de
+   formule est une MARQUE : MediPASS, MediFlex, BoxEDN, BoxECOS. En capitales,
+   BOXEDN se lit mal et la casse de la marque disparait. On la rend ici. */
+.carte-formule .entete-formule h3 { font-size: 1.5rem; text-transform: none; letter-spacing: 0; }
 .carte-formule .entete-formule .pour-qui { color: var(--turquoise-clair); font-family: var(--police-titre); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem; font-weight: 700; }
 .carte-formule .prix { padding: 22px 26px 4px; }
 .carte-formule .prix .montant { font-family: var(--police-titre); font-weight: 700; font-size: 2.2rem; color: var(--marine); line-height: 1; }
